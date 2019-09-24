@@ -27,19 +27,19 @@ public class ProductController {
         return product;
     }
 	
-	@PostMapping("/save")
+	@PostMapping("/")
 	public String saveProduct(@RequestBody List<Product> product) {
 		productDao.saveAll(product);
 		return product.size() + " Product(s) Saved";
 	}
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public String deleteProduct(@PathVariable(value = "id") int id) {
         productDao.deleteById(id);
         return "Product Deleted";
     }
 
-    @PutMapping("/update")
+    @PutMapping("/")
     public String updateProduct(@RequestBody Product product) {
             Optional<Product> product1 = productDao.findById(product.getId());
         if(product1.isPresent()){
